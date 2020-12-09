@@ -1,0 +1,390 @@
+<!DOCTYPE html >
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />	
+	<title>z축</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <script src="https://kit.fontawesome.com/85b4ce6da2.js" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <style>
+        body {
+            width: 100%;
+            height: 23000px;
+            font-size: 12px;
+        }
+        .bg {
+            position:fixed;
+            width: 100%;
+            height: 100%;
+            top:0;
+            left: 0;
+            background: url(img1/bg.jpg)no-repeat center top;
+            background-size: cover;
+        }
+        /* 로고 */
+        h1 {
+            position: fixed;
+            top: 40px;
+            left: 70px;
+            z-index: 2;
+        }
+        h1 img {
+            width: 130px;
+        }
+        /* 메뉴 */
+        .gnb {
+            position:fixed;
+            top:50px;
+            right: 250px;
+            z-index: 2;
+        }
+        .gnb li {
+            float: left;
+            margin-left: 50px;
+        }
+        .gnb li a {
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            transform:scale(1);
+            opacity: 0.5;
+            transition: all 0.5s;
+        }
+        .gnb li a:hover {
+            transform:scale(1.5);
+            opacity: 1;
+        }
+        /* sns */
+        .sns {
+            position:fixed;
+            top: 50px;
+            right: 50px;
+            z-index: 2;
+        }
+        .sns li {
+            float: left;
+            margin-left: 30px;
+        }
+        .sns li a i {
+            font-size: 18px;
+            color: #fff;
+            transform:scale(1);
+            opacity: 0.5;
+            transition: all 0.5s;
+        }
+        .sns li a i:hover {
+            transform: scale(1.5);
+            opacity: 1;
+        }
+        
+        /* 스크롤메뉴 */    
+        .scrollNavi{
+            position: fixed;
+            left: 100px;
+            top: 300px;
+            z-index: 2;
+        }
+        .scrollNavi li {
+            position: relative;
+            width: 150px;
+            height: 35px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: #fff;
+            text-align: center;
+            perspective: 400px;
+            cursor: pointer;
+        }
+        .scrollNavi li em {
+            position: absolute;
+            top: 8px;
+            left: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 1px #000;
+        }
+        .scrollNavi li span {
+            display: block;
+            width: 3%;
+            height: 100%;
+            position: absolute;
+            transform: skewX(-30deg);
+            box-shadow: 1px 1px 1px #000;
+        }
+        .scrollNavi li.on span {
+            width: 100%;
+        }
+        .scrollNavi li:nth-child(1) span {background: #ff0f51;}
+        .scrollNavi li:nth-child(2) span {background: #fffb02;}
+        .scrollNavi li:nth-child(3) span {background: #b57de4;}
+        .scrollNavi li:nth-child(4) span {background: #7cf923;}
+        .scrollNavi li:nth-child(5) span {background: #3dbdfa;}
+        
+        .copyright {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            font-size: 10px;
+            color: #555;
+        }
+        
+        section {
+            width: 1200px;
+            height: 700px;
+            position: fixed;
+            left: 50%;
+            margin-left: -600px;
+            top: 50%;
+            margin-top:-350px;
+            perspective: 2300px;
+            z-index: 1;
+        }
+        section>article {
+            width: 1200px;
+            height: 700px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.5;
+            z-index:8;
+        }
+        section>article.on {
+            opacity: 1;
+            z-index:9;
+        }
+        section>article:nth-child(1){transform: translateZ(0px);}
+        section>article:nth-child(2){transform: translateZ(-5000px);}
+        section>article:nth-child(3){transform: translateZ(-10000px);}
+        section>article:nth-child(4){transform: translateZ(-15000px);}
+        section>article:nth-child(5){transform: translateZ(-20000px);}
+        
+        section>article>p {
+            position: absolute;
+            width: 500px;
+            padding: 30px 60px;
+            color: #fff;
+            opacity: 1;
+        }
+        section>article>p>span {
+            font-size: 60px;
+            letter-spacing: 0;
+            line-height: 1.5;
+        }
+        section>article>img {
+            position: absolute;
+        }
+        /* 첫번째 박스*/
+        section>article:nth-child(1) p {
+            bottom:100px;
+            right: -100px;
+        }
+        section>article:nth-child(1) p span {
+            color: #ff0f51;
+        }
+        .obj11 {bottom:-100px; left:-270px;}
+        .obj12 {bottom:-85px; right:-593px;}
+        .obj13 {bottom:20px; left:-100px;}
+        /* 두번째 박스*/
+        section>article:nth-child(2) p {
+            bottom: 300px;
+            right: -100px;
+        }
+        section>article:nth-child(2) p span {
+            color: #fffb02;
+        }
+        .obj21 {bottom:-420px; right: -710px;}
+        .obj22 {bottom:-100px; right: -50px;}
+        /* 세번째 박스*/
+        section>article:nth-child(3) p{
+            bottom: 300px;
+            right: -100px;
+        }
+        section>article:nth-child(3) p span {
+            color: #b57de4;
+        }
+        .obj31 {bottom:70px; right: 110px;}
+        .obj32 {bottom:-160px; left: 100px;}
+        /* 네번째 박스*/
+        section>article:nth-child(4) p{
+            bottom: 290px;
+            left: 100px;
+        }
+        section>article:nth-child(4) p span {
+            color: #7cf923;
+        }
+        .obj41 {bottom:-150px; left 350px;}
+        .obj42 {bottom:-255px; right: 167px;}
+        .obj43 {bottom:-120px; right: -100px;}
+        /* 다섯번째 박스*/
+        section>article:nth-child(5) p{
+            bottom: 100px;
+            right: -150px;
+        }
+        section>article:nth-child(5) p span {
+            color: #3dbdfa;
+        }
+        .obj51 {bottom:-290px; left: -100px;}
+        .obj52 {bottom:170px; right: 30px;}
+        .obj53 {bottom:0px; left: -30px;}
+    </style>
+    <script>
+        $(function(){
+            $("body, html").stop().animate({scrollTop:0}, 1500);  
+            
+            $(window).scroll(function(){
+                var scroll = $(this).scrollTop();
+//                $("h1").text(scroll);
+                $("section>article").eq(0).css({"transform":"translateZ("+ scroll+"px)"});
+                $("section>article").eq(1).css({"transform":"translateZ("+ parseInt(-5000+scroll)+"px)"});
+                $("section>article").eq(2).css({"transform":"translateZ("+ parseInt(-10000+scroll)+"px)"});
+                $("section>article").eq(3).css({"transform":"translateZ("+ parseInt(-15000+scroll)+"px)"});
+                $("section>article").eq(4).css({"transform":"translateZ("+ parseInt(-20000+scroll)+"px)"});
+     
+                  for(var i=0; i<5; i++){
+                    if(scroll>=(i*5000)-2500 && scroll<(i+1)*5000-2500){
+                        $(".scrollNavi li").removeClass();
+                        $(".scrollNavi li").eq(i).addClass("on");
+                        $("article").removeClass();
+                        $("article").eq(i).addClass("on");
+                    }
+                  }
+            });
+            $(".scrollNavi li").eq(0).click(function(){
+                $("body, html").stop().animate({"scrollTop":0}, 1000);
+            });
+            $(".scrollNavi li").eq(1).click(function(){
+                $("body, html").stop().animate({"scrollTop":5000}, 1000);
+            });
+            $(".scrollNavi li").eq(2).click(function(){
+                $("body, html").stop().animate({"scrollTop":10000}, 1000);
+            });
+            $(".scrollNavi li").eq(3).click(function(){
+                $("body, html").stop().animate({"scrollTop":15000}, 1000);
+            });
+            $(".scrollNavi li").eq(4).click(function(){
+                $("body, html").stop().animate({"scrollTop":20000}, 1000);
+            });
+            
+            $("body").mousemove(function(e){
+                var posX =  e.pageX/100;
+                var posY = e.pageY/150;
+                $(".obj11").css({left:-270-posX, bottom:-100-posY});
+                $(".obj12").css({right:-593-posX, top:-85-posY});
+                $(".obj13").css({left:-100-posX, bottom:20-posY});
+                
+                $(".obj21").css({right:-710-posX, bottom:-420-posY});
+                
+                $(".obj22").css({right:-50-posX, bottom:-100-posY});
+                
+                $(".obj31").css({right:110-posX, bottom:70-posY});
+                $(".obj32").css({left:100-posX, bottom:-160-posY});
+                
+                $(".obj41").css({left:350-posX, bottom:-150-posY});
+                $(".obj42").css({right:167-posX, top:-255-posY});
+                $(".obj43").css({right:-100-posX, bottom:-120-posY});
+                
+                $(".obj51").css({left:-100-posX, bottom:-290-posY});
+                $(".obj52").css({right:30-posX, top:170-posY});
+                $(".obj53").css({left:-30-posX, bottom:0-posY});
+            });
+        });    
+    </script>
+</head>
+<body>
+    <div class="bg"></div>
+
+    <h1><img src="img1/logo_1.png" alt=""></h1>
+    
+<!--    메뉴-->
+    <ul class="gnb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Info</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+    
+<!--    sns-->
+    <ul class="sns">
+        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+    </ul>
+    
+<!--    스크롤 메뉴-->
+    <ul class="scrollNavi">
+        <li class="on"><span></span><em>Player 1</em></li>
+        <li><span></span><em>Player 2</em></li>
+        <li><span></span><em>Player 3</em></li>
+        <li><span></span><em>Player 4</em></li>
+        <li><span></span><em>Player 5</em></li>
+    </ul>
+    
+<!--    박스-->
+    <section>
+        <article class="on">
+            <img class="obj11" src="img1/pic11.png" alt="">
+            <img class="obj12" src="img1/pic12.png" alt="">
+            <img class="obj13" src="img1/player1.png" alt="">
+            <p class="on">
+                <span>Lorem ipsum</span><br>
+                <em>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</em>
+            </p>
+        </article>
+        
+        <article>
+            <img class="obj21" src="img1/pic21.png" alt="">
+            <img class="obj22" src="img1/player2.png" alt="">
+            <p class="on">
+                <span>Lorem ipsum</span><br>
+                <em>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</em>
+            </p>
+        </article>
+        <article>
+            <img class="obj31" src="img1/pic31.png" alt="">
+            <img class="obj32" src="img1/player3.png" alt="">
+            <p class="on">
+                <span>Lorem ipsum</span><br>
+                <em>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</em>
+            </p>
+        </article>
+        <article>
+            <img class="obj41" src="img1/pic41.png" alt="">
+            <img class="obj42" src="img1/pic42.png" alt="">
+            <img class="obj43" src="img1/player4.png" alt="">
+            <p class="on">
+                <span>Lorem ipsum</span><br>
+                <em>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</em>
+            </p>
+        </article>
+        <article>
+            <img class="obj51" src="img1/pic51.png" alt="">
+            <img class="obj52" src="img1/pic52.png" alt="">
+            <img class="obj53" src="img1/player5.png" alt="">
+            <p class="on">
+                <span>Lorem ipsum</span><br>
+                <em>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</em>
+            </p>
+        </article>
+    </section>
+    <span class="copyright">Copyright 2020.12. All right reserved</span>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

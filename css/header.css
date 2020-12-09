@@ -1,0 +1,374 @@
+@charset "utf-8";
+@import url(reset.css);
+
+body {
+    font-family: 'NanumSquare';
+    width: 100%;
+    font-size: 16px;
+    color: #1c1c1b;
+}
+header {
+    width: 100%;
+    position: relative;
+}
+header:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/*메뉴*/
+
+nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+header nav > #logo {
+    width: 184px;
+    height: 80px;
+    float: left;
+    margin: 7px 50px;
+}
+header nav > #logo > h1 a {
+    display: block;
+}
+header nav > #menu {
+    width: 1000px;
+    height: 350px;
+    float: right;
+}
+header nav > #menu > .topMenu {
+    float: right;
+    margin-top: 15px;
+    margin-right: 60px;
+    font-size: 13px;
+}
+header nav > #menu > .btmMenu {
+    width: 100%;
+    float: right;
+    margin-top: 15px;
+    position: relative;
+    z-index: 151;
+}
+header nav > #menu > .btmMenu > ul {
+    width: 100%;
+}
+header nav > #menu > .btmMenu > ul:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+header nav > #menu > .btmMenu > ul > li {
+    float: left;
+    width: 20%;
+    line-height: 45px;
+    text-align: center;
+}
+header nav > #menu > .btmMenu > ul > li > a {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+header nav > #menu > .btmMenu > ul > li > .sub {
+    position: relative;
+    margin-top: 15px;
+    display: block;
+}
+header nav > #menu > .btmMenu > ul > li > .sub > li {
+    line-height: 50px;
+}
+header nav > #menu > .btmMenu > ul > li > .sub > li > a {
+    display: block;
+    font-weight: bold;
+}
+header nav > #menu > .btmMenu > ul > li > .sub > li:hover {
+    color: #39528a;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+/*feda67*/
+
+.clearfix{content:"";clear: both;display: block;}
+.first >li{position: relative;}  /* 방향에 따라 추가 또는 제거해준다 */
+.first >li{float: left;}
+.first >li>a{display: block;padding:7px 0;}
+/*.first .menu{width:100px;line-height:30px;}*/
+
+.first .menu>a:after{
+/*    여긴 좌->우방향으로 메뉴줄 보이기 이땐 li에 position:relative를 빼원야 한다.*/
+    content: "";
+    border-bottom: 4px solid #39528a;
+    width: 0;
+    display: block;
+    transition-duration: 0.4s;
+    margin-top: 10px;
+/*    여긴 중앙->양쪽 방향으로 메뉴줄 보이기 --- 이땐 li에 position:relative를 해준다*/
+/*
+    content: "";
+    position: absolute;
+    top:75px;
+    border-bottom: 5px solid #f0ca29;
+    width: 0;
+    left:50%;		    
+    transform:translateX(-50%);
+    transition-duration: 0.4s;
+    margin-top: -9px;
+*/
+}
+.first .menu:hover.menu>a:after{width: 100%;}
+
+header > #menuBar {
+    display: block;
+    width: 100%;
+    height: 240px;
+    background-color: #f9f9f9;
+    border-top: 2px solid #39528a;
+    position: absolute;
+    top: 110px;
+    z-index: 150;
+}
+
+header > #menuBar > #menu_banner {
+    max-width: 1325px;
+    margin: 0 auto;
+}
+header > #menuBar > #menu_banner > a {
+    width: 214px;
+    height: 250px;
+    display: block;
+}
+header > #menuBar > #menu_banner > a > img {
+    width: 204px;
+    height: 240px;
+}
+
+#m_menu {
+    display: none;
+}
+
+
+
+/*반응형-mediaQuery*/
+@media all and (max-width:766px) {
+       header nav > #logo {
+            width: 134px;
+            margin: 5px;
+        }
+        header nav > #logo > h1 a {
+            display: block;
+        }
+
+        header nav > #menu {
+            display: none;
+        }
+        header > #menuBar {
+            visibility: hidden;
+        }
+        nav {
+            width: 100%;
+        }
+        
+        
+        #m_menu {
+            width: 15%;
+            float: right;
+            position: relative;
+            display: block;
+            z-index: 9999;
+        }
+        #m_menu:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        #m_menu > .hamburger_menu {
+            float: right;
+            width: 30px;
+            height: 30px;
+            margin: 25px;
+            cursor: pointer;
+            z-index: 9999;
+        }
+        #m_menu > #m_bg_menu {
+            width: 80%;
+            height: 1000px;
+            position: fixed;
+            left: 100%;
+            top: 0;
+            background-color: #f9f9f9;
+            display: none;
+            z-index: 200;
+        }
+        #m_menu > #m_bg_menu > .m_t_menu {
+            width: 100%;
+            line-height: 50px;
+            background-image: url(../images/m_login.png);
+            background-repeat: no-repeat;
+            background-size: 25px 25px;
+            background-position: 10px 11px;
+            background-color: #39528a;
+            padding-left: 50px;
+            color: #eee;
+            word-spacing: 10px;
+        }
+        #m_menu > #m_bg_menu > .m_t_menu > a {
+            color: #f9f9f9;
+        }
+        #m_menu > #m_bg_menu > .m_btm_menu {
+            width: 100%;
+        }
+        #m_menu > #m_bg_menu > .m_btm_menu > ul {
+            width: 100%;
+        }
+        #m_menu > #m_bg_menu > .m_btm_menu > ul > li {
+            line-height: 55px;
+/*            background: url(../images/m_menu_down.png) 93% 15px no-repeat;*/
+/*            background-size: 25px 25px;*/
+        }
+        #m_menu > #m_bg_menu > .m_btm_menu > ul > li > a {
+            padding-left: 30px;
+            font-size: 17px;
+            display: block;
+            border-bottom: 1px solid #d5d5d5;
+        }
+        #m_menu > #m_bg_menu > .m_btm_menu > ul > li > a:hover {
+            color: #39528a;
+            font-weight: bold;
+            font-family: 'NanumSquareEB';
+        }
+        #m_menu > #m_bg_menu > .m_btm_menu > ul > li > .m_sub {
+            display: none;
+        }
+        #m_menu > #m_bg_menu > .m_btm_menu > ul > li > .m_sub > li {
+            line-height: 40px;
+            border-bottom: 1px solid #d5d5d5;
+            background: #eee;
+        }
+        #m_menu > #m_bg_menu > .m_btm_menu > ul > li > .m_sub > li > a {
+            padding-left: 60px;
+            display: block;
+            font-size: 17px;
+        }
+        #m_menu > #m_bg_menu > .m_search {
+            width: 100%;
+            line-height: 90px;
+            position: absolute;
+            background-color: #fff;
+            display: none;
+        }
+        #m_menu > #m_bg_menu > .m_search > form {
+            text-align: center;
+            margin: 0 auto;
+        }
+        #m_menu > #m_bg_menu > .m_search > form > input[type="text"] {
+            width: 80%;
+            height: 39px;
+            padding-left: 10px;
+        }
+        #m_menu > #m_bg_menu > .m_search > form > input[type="button"] {
+            width: 40px;
+            height: 39px;
+            border: 0;
+            background-color: #39528a;
+            color: #f9f9f9;
+        }
+        #m_menu > #m_bg_menu > .m_search_btn {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 15px;
+            right: 45px;
+            cursor: pointer;
+        }
+        #m_menu > #m_bg_menu > .m_close {
+            position: absolute;
+            top: 6px;
+            right: 10px;
+            color: #f9f9f9;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+    }
+
+
+@media all and (min-width:767px) and (max-width:1000px) {
+
+        header nav > #logo {
+            float: none;
+            margin: 10px auto;
+        }
+        header nav > #menu {
+            width: 100%;
+            float: none;
+        }
+        header nav > #menu > .topMenu {
+            position: absolute;
+            float: none;
+            top: 10px;
+            right: 55px;
+            margin-top: 0;
+            margin-right: 0;
+        }
+        header nav > #menu > .btmMenu {
+            width: 100%;
+            float: none;
+            margin-top: 10px;
+        }
+
+        header > #menuBar {
+            position: absolute;
+            top: 155px;
+        }
+        header > #menuBar > #menu_banner > a {
+            display: none;
+        }
+        
+        #m_menu {
+            display: none;
+        }
+        
+}
+
+
+
+@media all and (min-width:999px) and (max-width:1300px) {
+
+        header nav > #logo {
+            float: none;
+            margin: 10px auto;
+        }
+        header nav > #menu {
+            width: 100%;
+            float: none;
+        }
+        header nav > #menu > .topMenu {
+            position: absolute;
+            float: none;
+            top: 10px;
+            right: 55px;
+            margin-top: 0;
+            margin-right: 0;
+        }
+        header nav > #menu > .btmMenu {
+            width: 100%;
+            float: none;
+            margin-top: 10px;
+        }
+
+        header > #menuBar {
+            position: absolute;
+            top: 155px;
+        }
+        header > #menuBar > #menu_banner > a {
+            display: none;
+        }
+        
+        #m_menu {
+            display: none;
+        }
+        
+}
